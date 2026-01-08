@@ -1,9 +1,12 @@
 /*
  * liboct - a nice simple standalone octonion maths library
  *
- * Chris "Scáth" Ó Luanaigh, 2026
+ * Version - 0.1
  *
- * GPL 3
+ * (c) Chris "Scáth" Ó Luanaigh, 2026
+ *
+ * License: GPL 3.0
+ *
  */
 
 #ifndef OCT_H

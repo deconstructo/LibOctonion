@@ -2,9 +2,11 @@
 
 	Standalone Octonion library
 
-	Chris "Scáth" Ó Luanaigh, 2026
+	(c) Chris "Scáth" Ó Luanaigh, 2026
 
-	GPL 3
+	Version: 0.1
+
+	License: GPL 3.0
 
  */
 
