@@ -1,3 +1,16 @@
+/*
+
+    Standalone Octonion library
+
+    (c) Chris "Scáth" Ó Luanaigh, 2026
+
+    Version: 0.1
+
+    License: GPL 3.0
+
+ */
+
+
 #include <stdio.h>
 #include <math.h>
 #include "octonion.h"
