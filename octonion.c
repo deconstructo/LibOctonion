@@ -189,7 +189,7 @@ octonion oct_multiply (octonion p, octonion q) {
 }
 
 void oct_print(octonion q) {
-    printf("#O(%.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f)\n",
+    printf("𝕆(%.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f)\n",
            q.e[0], q.e[1], q.e[2], q.e[3],
            q.e[4], q.e[5], q.e[6], q.e[7]);
 }	
