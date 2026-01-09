@@ -1,0 +1,21 @@
+#!/bin/sh
+# postrm script for liboct
+# Run ldconfig after removal
+
+set -e
+
+case "$1" in
+    remove|purge|upgrade|disappear)
+        ldconfig
+        ;;
+    
+    failed-upgrade|abort-install|abort-upgrade)
+        ;;
+    
+    *)
+        echo "postrm called with unknown argument \`$1'" >&2
+        exit 1
+        ;;
+esac
+
+exit 0

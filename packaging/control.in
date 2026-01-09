@@ -1,0 +1,17 @@
+Package: liboct
+Version: @VERSION@-@RELEASE@
+Section: libs
+Priority: optional
+Architecture: arm64
+Depends: libc6 (>= 2.17)
+Maintainer: Chris "Scáth" Ó Luanaigh <metanoia@gmail.com>
+Description: Octonion arithmetic library
+ liboct is a standalone C library for octonion arithmetic. Octonions are
+ 8-dimensional hypercomplex numbers, the final normed division algebra.
+ .
+ This library provides:
+  - Complete octonion arithmetic (add, subtract, multiply)
+  - Properties (norm, conjugate, inverse)
+  - Non-associative multiplication with 8x8 table
+  - Full support for baroque number systems exploration
+Homepage: https://github.com/deconstructo/libOctonion
