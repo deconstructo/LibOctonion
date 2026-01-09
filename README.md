@@ -265,6 +265,11 @@ Contributions welcome! Areas of interest:
 
 ## Version History
 
+### 0.2.0 (2026-01-09)
+- moved to pass-by-reference
+- added versioning to library
+- enhanced build options - including building .debs and dist files
+
 ### 0.1.0 (2026-01-09)
 
 - Initial release
