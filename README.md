@@ -1,18 +1,16 @@
 
 This is a simple, easy to use octonion library, written in C.
 
-My design goal has been to make this library easy to use rather
-than high performance - so you'll note that I pass octonions
-by value rather than by reference.
+My first design goal is to make this library easy to use.
 
 Another goal is to make this a standalone library, thus I do
 not make use of things like CQRlib that would make things like
 multiplication and exponential functions easier to write and
 likely more performant.
 
-I will write a second version of this library that does things
-"the right way". But for now, I'm going to stay with the
-less performant approach.
+At present, it is minimal, and doesn't support the full range
+of functions. These will come as I gain a better understanding
+of octonion mathematics.
 
 
 Now: Why an Octonion library?

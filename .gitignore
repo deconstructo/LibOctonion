@@ -3,6 +3,7 @@
 *.dylib
 *.a
 
+tmp
 
 # Editor backups
 *~

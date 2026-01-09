@@ -1,6 +1,6 @@
 /*
 
-    Standalone Octonion library
+    Standalone Octonion library - Test Suite
 
     (c) Chris "Scáth" Ó Luanaigh, 2026
 
@@ -15,31 +15,62 @@
 #include <math.h>
 #include "octonion.h"
 
+void test_versioning() {
+
+    printf("=== liboct Version Information ===\n\n");
+
+    /* Method 1: String version */
+    printf("Version string: %s\n", oct_version_string());
+    printf("Version text:   %s\n", oct_version_text());
+
+    /* Method 2: Component version */
+    int major, minor, patch;
+    oct_version(&major, &minor, &patch);
+    printf("Version parts:  %d.%d.%d\n", major, minor, patch);
+
+    /* Method 3: Numeric version */
+    printf("Version number: 0x%06X\n", oct_version_number());
+
+    /* Compile-time macros */
+    printf("\nCompile-time constants:\n");
+    printf("  OCT_VERSION_MAJOR:  %d\n", OCT_VERSION_MAJOR);
+    printf("  OCT_VERSION_MINOR:  %d\n", OCT_VERSION_MINOR);
+    printf("  OCT_VERSION_PATCH:  %d\n", OCT_VERSION_PATCH);
+    printf("  OCT_VERSION:        0x%06X\n", OCT_VERSION);
+
+	printf("\n\n");
+}
 
 void test_basis_multiplication() {
+
     printf("Testing basis element multiplication...\n");
     
     /* Test i² = -1 */
-    octonion i = oct_make(0, 1, 0, 0, 0, 0, 0, 0);
-    octonion i_squared = oct_multiply(i, i);
+    octonion i, i_squared;
+    oct_make(&i, 0, 1, 0, 0, 0, 0, 0, 0);
+    oct_multiply(&i_squared, i, i);
     printf("i² = "); oct_print(i_squared);
     
     /* Test i*j = k */
-    octonion j = oct_make(0, 0, 1, 0, 0, 0, 0, 0);
-    octonion ij = oct_multiply(i, j);
+    octonion j, ij;
+    oct_make(&j, 0, 0, 1, 0, 0, 0, 0, 0);
+    oct_multiply(&ij, i, j);
     printf("i*j = "); oct_print(ij);
     
-    /* Test j*i = -k */
-    octonion ji = oct_multiply(j, i);
+    /* Test j*i = -k (non-commutativity) */
+    octonion ji;
+    oct_multiply(&ji, j, i);
     printf("j*i = "); oct_print(ji);
     
     /* Test l² = -1 */
-    octonion l = oct_make(0, 0, 0, 0, 1, 0, 0, 0);
-    octonion l_squared = oct_multiply(l, l);
+    octonion l, l_squared;
+    oct_make(&l, 0, 0, 0, 0, 1, 0, 0, 0);
+    oct_multiply(&l_squared, l, l);
     printf("l² = "); oct_print(l_squared);
     
     /* Test i*l = il */
-    octonion il = oct_multiply(i, l);
+    octonion il;
+    oct_multiply(&il, i, l);
     printf("i*l = "); oct_print(il);
     
     printf("\n");
@@ -49,15 +80,18 @@ void test_non_associativity() {
     printf("Testing non-associativity...\n");
     
     /* Classic example: (i*j)*l ≠ i*(j*l) */
-    octonion i = oct_make(0, 1, 0, 0, 0, 0, 0, 0);
-    octonion j = oct_make(0, 0, 1, 0, 0, 0, 0, 0);
-    octonion l = oct_make(0, 0, 0, 0, 1, 0, 0, 0);
+    octonion i, j, l;
+    oct_make(&i, 0, 1, 0, 0, 0, 0, 0, 0);
+    oct_make(&j, 0, 0, 1, 0, 0, 0, 0, 0);
+    oct_make(&l, 0, 0, 0, 0, 1, 0, 0, 0);
     
-    octonion ij = oct_multiply(i, j);
-    octonion left = oct_multiply(ij, l);  /* (i*j)*l */
+    octonion ij, left;
+    oct_multiply(&ij, i, j);
+    oct_multiply(&left, ij, l);  /* (i*j)*l */
     
-    octonion jl = oct_multiply(j, l);
-    octonion right = oct_multiply(i, jl); /* i*(j*l) */
+    octonion jl, right;
+    oct_multiply(&jl, j, l);
+    oct_multiply(&right, i, jl); /* i*(j*l) */
     
     printf("(i*j)*l = "); oct_print(left);
     printf("i*(j*l) = "); oct_print(right);
@@ -78,13 +112,15 @@ void test_non_associativity() {
 void test_norm_properties() {
     printf("Testing norm properties...\n");
     
-    octonion a = oct_make(1, 2, 3, 4, 5, 6, 7, 8);
-    octonion b = oct_make(2, 1, 0, -1, 3, -2, 1, 0);
+    octonion a, b;
+    oct_make(&a, 1, 2, 3, 4, 5, 6, 7, 8);
+    oct_make(&b, 2, 1, 0, -1, 3, -2, 1, 0);
     
     double norm_a = oct_norm(a);
     double norm_b = oct_norm(b);
     
-    octonion ab = oct_multiply(a, b);
+    octonion ab;
+    oct_multiply(&ab, a, b);
     double norm_ab = oct_norm(ab);
     
     printf("|a| = %.6f\n", norm_a);
@@ -101,6 +137,9 @@ void test_norm_properties() {
 }
 
 int main() {
+
+	test_versioning();
+
     printf("=== Octonion Arithmetic Test Suite ===\n\n");
     
     test_basis_multiplication();
