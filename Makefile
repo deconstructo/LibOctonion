@@ -94,8 +94,8 @@ install: all
 	# Install pkg-config file
 	sed -e 's|@PREFIX@|$(PREFIX)|g' \
 	    -e 's|@VERSION@|$(VERSION)|g' \
-	    octonion.pc.in > octonion.pc
-	$(INSTALL) -m 644 octonion.pc $(DESTDIR)$(PKGCONFIGDIR)/
+	    liboct.pc.in > liboct.pc
+	$(INSTALL) -m 644 liboct.pc $(DESTDIR)$(PKGCONFIGDIR)/
 	
 	# Update library cache (if not using DESTDIR)
 	@if [ -z "$(DESTDIR)" ]; then \
@@ -108,7 +108,7 @@ uninstall:
 	$(RM) $(DESTDIR)$(LIBDIR)/$(SHARED_SONAME)
 	$(RM) $(DESTDIR)$(LIBDIR)/$(SHARED_LINK)
 	$(RM) $(DESTDIR)$(INCLUDEDIR)/octonion.h
-	$(RM) $(DESTDIR)$(PKGCONFIGDIR)/octonion.pc
+	$(RM) $(DESTDIR)$(PKGCONFIGDIR)/liboct.pc
 	@if [ -z "$(DESTDIR)" ]; then \
 		ldconfig 2>/dev/null || true; \
 	fi
@@ -128,7 +128,7 @@ rpm: rpm-prep
 	$(MKDIR) $(NAME)-$(VERSION)
 	cp $(SOURCES) $(HEADERS) $(NAME)-$(VERSION)/
 	cp test.c  $(NAME)-$(VERSION)/
-	cp Makefile octonion.pc.in $(NAME)-$(VERSION)/
+	cp Makefile liboct.pc.in $(NAME)-$(VERSION)/
 	tar czf rpmbuild/SOURCES/$(NAME)-$(VERSION).tar.gz $(NAME)-$(VERSION)
 	$(RM) -r $(NAME)-$(VERSION)
 	
@@ -171,7 +171,7 @@ dist:
 	$(MKDIR) $(NAME)-$(VERSION)
 	cp $(SOURCES) $(HEADERS) $(NAME)-$(VERSION)/
 	cp test.c  $(NAME)-$(VERSION)/
-	cp Makefile octonion.pc.in README.md LICENSE $(NAME)-$(VERSION)/
+	cp Makefile liboct.pc.in README.md LICENSE $(NAME)-$(VERSION)/
 	cp -r packaging $(NAME)-$(VERSION)/
 	tar czf $(NAME)-$(VERSION).tar.gz $(NAME)-$(VERSION)
 	$(RM) -r $(NAME)-$(VERSION)
@@ -181,7 +181,7 @@ dist:
 # ============================================
 
 clean:
-	$(RM) *.o *.a *.so* $(TEST_BASIC) $(TEST_VERSION) octonion.pc
+	$(RM) *.o *.a *.so* $(TEST_BASIC) $(TEST_VERSION) liboct.pc
 	$(RM) -r rpmbuild debian
 	$(RM) *.deb *.rpm *.tar.gz
 
