@@ -12,6 +12,7 @@
 #ifndef OCT_H
 #define OCT_H
 
+
 #define OCT_ELEMENTS 8
 
 typedef struct oct {
