@@ -1,6 +1,6 @@
 #!/bin/bash
 # Release script for liboct
-# Usage: ./release.sh 0.2.0
+# Usage: ./release.sh 0.3.0
 
 set -e
 
@@ -8,7 +8,7 @@ VERSION=${1:-$(grep "^VERSION = " Makefile | cut -d' ' -f3)}
 
 if [ -z "$VERSION" ]; then
     echo "Usage: $0 <version>"
-    echo "Example: $0 0.2.0"
+    echo "Example: $0 0.3.0"
     exit 1
 fi
 
