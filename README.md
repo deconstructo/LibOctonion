@@ -265,6 +265,9 @@ Contributions welcome! Areas of interest:
 
 ## Version History
 
+### 0.3.0 (2026-01-19)
+- First real release!
+
 ### 0.2.0 (2026-01-09)
 - moved to pass-by-reference
 - added versioning to library
